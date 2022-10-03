@@ -61,10 +61,5 @@ public class DialogHelper {
         return JOptionPane.showInputDialog(null, message,
                 "Hệ thống quản lý đào tạo", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-//     public static  boolean showMessage(String message) {
-//        Message obj = new Message(EdusysApp.getFrames()[0], true);
-//        obj.showMessage(message);
-//        return obj.isOk();
-//    }
+
 }

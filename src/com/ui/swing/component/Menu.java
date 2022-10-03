@@ -1,14 +1,8 @@
 package com.ui.swing.component;
 
-import com.ui.swing.event.EventMenu;
-import com.ui.swing.event.EventMenuSelected;
-import com.ui.swing.event.EventShowPopupMenu;
-import com.ui.model.ModelMenu;
-import com.ui.swing.MenuAnimation;
-import com.ui.swing.MenuItem;
-import com.ui.swing.scrollbar.ScrollBarCustom;
+import com.ui.swing.component.EventMenuSelected;
+import  com.ui.swing.component.Model_Menu;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,149 +10,99 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import net.miginfocom.swing.MigLayout;
+import com.ui.swing.component.ListMenu;
 
 public class Menu extends javax.swing.JPanel {
 
-    public boolean isShowMenu() {
-        return showMenu;
-    }
-
-    public void addEvent(EventMenuSelected event) {
-        this.event = event;
-    }
-
-    public void setEnableMenu(boolean enableMenu) {
-        this.enableMenu = enableMenu;
-    }
-
-    public void setShowMenu(boolean showMenu) {
-        this.showMenu = showMenu;
-    }
-
-    public void addEventShowPopup(EventShowPopupMenu eventShowPopup) {
-        this.eventShowPopup = eventShowPopup;
-    }
-
-    private final MigLayout layout;
     private EventMenuSelected event;
-    private EventShowPopupMenu eventShowPopup;
-    private boolean enableMenu = true;
-    private boolean showMenu = true;
+
+    public void addEventMenuSelected(EventMenuSelected event) {
+        this.event = event;
+        listMenu1.addEventMenuSelected(event);
+    }
 
     public Menu() {
         initComponents();
         setOpaque(false);
-        sp.getViewport().setOpaque(false);
-        sp.setVerticalScrollBar(new ScrollBarCustom());
-        layout = new MigLayout("wrap, fillx, insets 0", "[fill]", "[]0[]");
-        panel.setLayout(layout);
+        listMenu1.setOpaque(false);
+        init();
     }
 
-    public void initMenuItem() {
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/1.png")), "Quản lý", "Nhân viên", "Người học", "Khóa học", "Chuyên đề"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/2.png")), "Thống kê", "Doanh thu theo năm", "Người học", "Bảng điểm theo khóa","Bảng điểm theo chuyên đề"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/3.png")), "Hướng dẫn", "Hướng dẫn sử dụng", "Trợ giúp"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/4.png")), "Đăng xuất"));
-        addMenu(new ModelMenu(new ImageIcon(getClass().getResource("/com/raven/icon/5.png")), "Thoát"));
-
-    }
-
-    private void addMenu(ModelMenu menu) {
-        panel.add(new MenuItem(menu, getEventMenu(), event, panel.getComponentCount()), "h 40!");
-    }
-
-    private EventMenu getEventMenu() {
-        return new EventMenu() {
-            @Override
-            public boolean menuPressed(Component com, boolean open) {
-                if (enableMenu) {
-                    if (isShowMenu()) {
-                        if (open) {
-                            new MenuAnimation(layout, com).openMenu();
-                        } else {
-                            new MenuAnimation(layout, com).closeMenu();
-                        }
-                        return true;
-                    } else {
-                        eventShowPopup.showPopup(com);
-                    }
-                }
-                return false;
-            }
-        };
-    }
-
-    public void hideallMenu() {
-        for (Component com : panel.getComponents()) {
-            MenuItem item = (MenuItem) com;
-            if (item.isOpen()) {
-                new MenuAnimation(layout, com, 500).closeMenu();
-                item.setOpen(false);
-            }
-        }
+    private void init() {
+          listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Quản lý", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Thống kê", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Hướng dẫn", Model_Menu.MenuType.MENU));
+         listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
+        
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Đăng xuất", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Thoát", Model_Menu.MenuType.MENU));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sp = new javax.swing.JScrollPane();
-        panel = new javax.swing.JPanel();
-        profile1 = new com.ui.swing.component.Profile();
+        panelMoving = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        listMenu1 = new com.ui.swing.component.ListMenu<>();
 
-        sp.setBorder(null);
-        sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panelMoving.setOpaque(false);
 
-        panel.setOpaque(false);
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edusys/assets/logo.png"))); // NOI18N
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
+        panelMoving.setLayout(panelMovingLayout);
+        panelMovingLayout.setHorizontalGroup(
+            panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMovingLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+        panelMovingLayout.setVerticalGroup(
+            panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
-
-        sp.setViewportView(panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-            .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(panelMoving, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(profile1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelMoving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp))
+                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    protected void paintComponent(Graphics grphcs) {
+    protected void paintChildren(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint g = new GradientPaint(0, 0, Color.decode("#f12711"), 0, getHeight(), Color.decode("#f5af19"));
+        GradientPaint g = new GradientPaint(0, 0, Color.decode("#1CB5E0"), 0, getHeight(), Color.decode("#000046"));
         g2.setPaint(g);
-        g2.fillRect(0, 0, getWidth(), getHeight());
-        super.paintComponent(grphcs);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.fillRect(getWidth() - 20, 0, getWidth(), getHeight());
+        super.paintChildren(grphcs);
     }
-    
-    
-        private int x;
+
+    private int x;
     private int y;
 
     public void initMoving(JFrame fram) {
-        profile1.addMouseListener(new MouseAdapter() {
+        panelMoving.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {
                 x = me.getX();
@@ -166,7 +110,7 @@ public class Menu extends javax.swing.JPanel {
             }
 
         });
-        profile1.addMouseMotionListener(new MouseMotionAdapter() {
+        panelMoving.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent me) {
                 fram.setLocation(me.getXOnScreen() - x, me.getYOnScreen() - y);
@@ -175,8 +119,8 @@ public class Menu extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel panel;
-    private com.ui.swing.component.Profile profile1;
-    private javax.swing.JScrollPane sp;
+    private javax.swing.JLabel jLabel1;
+    private com.ui.swing.component.ListMenu<String> listMenu1;
+    private javax.swing.JPanel panelMoving;
     // End of variables declaration//GEN-END:variables
 }

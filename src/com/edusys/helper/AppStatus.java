@@ -18,7 +18,7 @@ public class AppStatus {
      */
     public static Employee USER = null;
     public static int STATUS = 0;
-  
+ 
     //0 is not load
     //1 is loading
     

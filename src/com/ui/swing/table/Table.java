@@ -3,6 +3,10 @@ package com.ui.swing.table;
 import com.ui.swing.scrollbar.ScrollBarCustom;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -32,16 +36,7 @@ public class Table extends JTable {
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable jtable, Object o, boolean selected, boolean focus, int i, int i1) {
-               if (o instanceof ModelAction) {
-                     ModelAction data = (ModelAction) o;
-                    Action cell = new Action(data);
-                    if (selected) {
-                        cell.setBackground(new Color(239, 244, 255));
-                    } else {
-                        cell.setBackground(Color.WHITE);
-                    }
-                    return cell;
-                } else {
+              
                     Component com = super.getTableCellRendererComponent(jtable, o, selected, focus, i, i1);
                     setBorder(noFocusBorder);
                     com.setForeground(new Color(102, 102, 102));
@@ -51,21 +46,11 @@ public class Table extends JTable {
                         com.setBackground(Color.WHITE);
                     }
                     return com;
-                }
+                
             }
         });
     }
 
-    @Override
-    public TableCellEditor getCellEditor(int row, int col) {
-      
-//           if (col == 8) {
-//            return new TableCellAction();
-//        } else {
-//            return super.getCellEditor(row, col);
-//        }
-            return new TableCellAction();
-    }
 
     public void addRow(Object[] row) {
         DefaultTableModel mod = (DefaultTableModel) getModel();
@@ -79,5 +64,26 @@ public class Table extends JTable {
         p.setBackground(Color.WHITE);
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
         scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+    }
+}
+
+ class TableHeader extends JLabel {
+
+    public TableHeader(String text) {
+        super(text);
+        setOpaque(true);
+        setBackground(Color.WHITE);
+        setFont(new Font("sansserif", 1, 12));
+        setForeground(new Color(102, 102, 102));
+        setBorder(new EmptyBorder(10, 5, 10, 5));
+    }
+
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        super.paintComponent(grphcs);
+        Graphics2D g2 = (Graphics2D) grphcs;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(new Color(230, 230, 230));
+        g2.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
     }
 }
