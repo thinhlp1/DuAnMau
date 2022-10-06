@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/ui/swing/table/Table.java</file>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/edusys/dao/StatiscalDAO.java</file>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/ui/swing/component/ThongKeNguoiHocJPanel.java</file>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/edusys/view/manager/ThongKeNguoiHoc.java</file>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/edusys/helper/JDBCHelper.java</file>
+            <file>file:/D:/FPT%20Polytechnic/Ki_4/DuAnMau/Assignment/ASM_Nhom/DuAnMau/src/com/ui/swing/Chart.java</file>
+        </group>
     </open-files>
 </project-private>

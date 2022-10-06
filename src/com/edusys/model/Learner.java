@@ -13,15 +13,16 @@ import java.util.Date;
  * @author ADMIN
  */
 public class Learner {
-     private String maNH;
- private String name;
- private Date dob;
- private boolean gender;
- private String numberPhone;
- private String email;
- private String note;
- private String maNV;
- private Date registDay = DateHelper.now();
+
+    private String maNH;
+    private String name;
+    private Date dob;
+    private boolean gender;
+    private String numberPhone;
+    private String email;
+    private String note;
+    private String maNV;
+    private Date registDay = DateHelper.now();
 
     public Learner(String maNH, String name, Date dob, boolean gender, String numberPhone, String email, String note, String maNV) {
         this.maNH = maNH;
@@ -33,21 +34,19 @@ public class Learner {
         this.note = note;
         this.maNV = maNV;
     }
-    
-    public Learner(){
-        
+
+    public Learner() {
+
     }
 
-    
- 
-    public String toString(){
+    public String toString() {
         return maNH + " - " + name;
     }
-    
-    public String info(){
-        return maNH + " " + name + email + numberPhone ;
+
+    public String info() {
+        return maNH + " " + name + email + numberPhone;
     }
- 
+
     public String getMaNH() {
         return maNH;
     }
@@ -120,5 +119,4 @@ public class Learner {
         this.registDay = registDay;
     }
 
-    
 }
