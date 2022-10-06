@@ -7,6 +7,8 @@ import com.edusys.view.manager.EmployeeManager;
 import com.edusys.view.manager.LearnerManage;
 import com.edusys.view.manager.MajorManager;
 import com.edusys.view.manager.ManagerForm;
+import com.edusys.view.popup.LoadingDialog;
+import com.edusys.view.popup.Login;
 import com.edusys.view.statistical.StaticalForm;
 import com.ui.swing.component.EventMenuSelected;
 
@@ -25,18 +27,16 @@ public class EdusysApp extends javax.swing.JFrame {
     private Header header;
     private ManagerForm managerForm;
     private StaticalForm statistical;
-    
-    
+
     private LearnerManage learnerManager;
     private EmployeeManager employeeManager;
     private MajorManager majorManager;
     private CourseManager courseManager;
-    
-    
+
     private int menuIndex;
     private int subMenuIndex;
 
-     static class MAIN_MENU {
+    static class MAIN_MENU {
 
         static int MANAGER = 1;
         static int STATISTICAL = 2;
@@ -46,70 +46,60 @@ public class EdusysApp extends javax.swing.JFrame {
 
     }
 
-
-
     public EdusysApp() {
-//        new LoadingDialog(this,true).setVisible(true);
-//        new LoginDialog(this,true).setVisible(true);
-        
+        //new LoadingDialog(this,true).setVisible(true);
+       // new Login(this,true).setVisible(true);
+
         AppStatus.USER = new EmployeeDAO().findById("ThinhLP");
         initComponents();
         init();
-        
-       
+
     }
 
     private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         mainPane.setLayout(layout);
         menu = new Menu();
-        
-         menu.addEventMenuSelected(new MenuListener() );
-          
-       
-      
+
+        menu.addEventMenuSelected(new MenuListener());
+
         header = new Header();
         managerForm = new ManagerForm();
         learnerManager = new LearnerManage();
-     
+
         mainPane.add(menu, "w 200!, spany 2");    // Span Y 2cell
         mainPane.add(header, "h 50!, wrap");
         mainPane.add(learnerManager, "w 100%, h 100%");
-       showForm(managerForm);
+        showForm(managerForm);
     }
-    
-    
-    class MenuListener implements EventMenuSelected{
-          @Override
-            public void selected(int index) {
-                 System.out.println(index);
-                if (index == MAIN_MENU.MANAGER) {
-                    System.out.println(index);
-                    showForm(managerForm);
-                } else if (index == MAIN_MENU.GUIGE) {
-                   // showForm(form1);
-                } else if (index == MAIN_MENU.STATISTICAL) {
-                    statistical = new StaticalForm();
-                  showForm(statistical);
-                } else if (index == MAIN_MENU.LOGOUT) {
-                    //showForm(form3);
-                }else if (index == MAIN_MENU.EXIT){
-                    System.exit(1);
-                }
+
+    class MenuListener implements EventMenuSelected {
+
+        @Override
+        public void selected(int index) {
+            System.out.println(index);
+            if (index == MAIN_MENU.MANAGER) {
+                System.out.println(index);
+                showForm(managerForm);
+            } else if (index == MAIN_MENU.GUIGE) {
+                // showForm(form1);
+            } else if (index == MAIN_MENU.STATISTICAL) {
+                statistical = new StaticalForm();
+                showForm(statistical);
+            } else if (index == MAIN_MENU.LOGOUT) {
+                //showForm(form3);
+            } else if (index == MAIN_MENU.EXIT) {
+                System.exit(1);
             }
+        }
     }
-    
 
-
-
- public void showForm(Component form) {
-        mainPane.remove(mainPane.getComponentCount()-1);
+    public void showForm(Component form) {
+        mainPane.remove(mainPane.getComponentCount() - 1);
         mainPane.add(form, "w 100%, h 100%");
         repaint();
         revalidate();
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -192,4 +182,3 @@ public class EdusysApp extends javax.swing.JFrame {
     private javax.swing.JLayeredPane mainPane;
     // End of variables declaration//GEN-END:variables
 }
-

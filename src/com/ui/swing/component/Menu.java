@@ -32,12 +32,12 @@ public class Menu extends javax.swing.JPanel {
     private void init() {
           listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
         listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Quản lý", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Thống kê", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Hướng dẫn", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/chart.png", "Thống kê", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/guide.png", "Hướng dẫn", Model_Menu.MenuType.MENU));
          listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
         
-        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Đăng xuất", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("/com/edusys/assets/manager.png", "Thoát", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/Exit.png", "Đăng xuất", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("/com/edusys/assets/Exit.png", "Thoát", Model_Menu.MenuType.MENU));
     }
 
     @SuppressWarnings("unchecked")
