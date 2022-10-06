@@ -14,9 +14,9 @@ import java.sql.SQLException;
 public class JDBCHelper {
 
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost;database=Polypro";
+    private static String dburl = "jdbc:sqlserver://localhost;database=Edusys";
     private static String username = "sa";
-    private static String password = "123";
+    private static String password = "sa";
 
     /*
  * Nạp driver

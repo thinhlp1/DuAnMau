@@ -24,7 +24,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class ManagerForm extends javax.swing.JPanel {
 
-    private LearnerManager learnerManager;
+    private LearnerManage learnerManager;
     private MajorManager majorManger;
     private CourseManager courseManager;
     private EmployeeManager employeeManager;
@@ -54,15 +54,15 @@ public class ManagerForm extends javax.swing.JPanel {
         
     
 
-        learnerManager = new LearnerManager();
+        courseManager = new CourseManager();
         add(tabPane, "h 70!, wrap");
-        add(learnerManager, "w 100%, h 100%");
+        add(courseManager, "w 100%, h 100%");
 
     }
     
     public void tabSelected(int index){
         if (index == SUB_MENU_MANAGER.LEARNER_MANAGER){
-            learnerManager = new LearnerManager();
+            learnerManager = new LearnerManage();
             showForm(learnerManager);
         }else if (index == SUB_MENU_MANAGER.MAJOR_MANAGER){
             majorManger = new MajorManager();
@@ -173,17 +173,19 @@ public class ManagerForm extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addComponent(btnCourseManager, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(btnMajorManager, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnMajorManager, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(710, Short.MAX_VALUE))
         );
         tabPaneLayout.setVerticalGroup(
             tabPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabPaneLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(tabPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(tabPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLearenerManger, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEmployeeManager, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCourseManager, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMajorManager, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnMajorManager, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -195,8 +197,8 @@ public class ManagerForm extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 780, Short.MAX_VALUE))
+                .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 783, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

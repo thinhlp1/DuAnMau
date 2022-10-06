@@ -2,8 +2,12 @@ package com.edusys.app;
 
 import com.edusys.dao.EmployeeDAO;
 import com.edusys.helper.AppStatus;
-import com.edusys.view.manager.*;
-
+import com.edusys.view.manager.CourseManager;
+import com.edusys.view.manager.EmployeeManager;
+import com.edusys.view.manager.LearnerManage;
+import com.edusys.view.manager.MajorManager;
+import com.edusys.view.manager.ManagerForm;
+import com.edusys.view.statistical.StaticalForm;
 import com.ui.swing.component.EventMenuSelected;
 
 import com.ui.swing.component.Header;
@@ -20,9 +24,10 @@ public class EdusysApp extends javax.swing.JFrame {
     private Menu menu;
     private Header header;
     private ManagerForm managerForm;
-
-
-    private LearnerManager learnerManager;
+    private StaticalForm statistical;
+    
+    
+    private LearnerManage learnerManager;
     private EmployeeManager employeeManager;
     private MajorManager majorManager;
     private CourseManager courseManager;
@@ -65,7 +70,7 @@ public class EdusysApp extends javax.swing.JFrame {
       
         header = new Header();
         managerForm = new ManagerForm();
-        learnerManager = new LearnerManager();
+        learnerManager = new LearnerManage();
      
         mainPane.add(menu, "w 200!, spany 2");    // Span Y 2cell
         mainPane.add(header, "h 50!, wrap");
@@ -82,11 +87,12 @@ public class EdusysApp extends javax.swing.JFrame {
                     System.out.println(index);
                     showForm(managerForm);
                 } else if (index == MAIN_MENU.GUIGE) {
-                   // setForm(form1);
+                   // showForm(form1);
                 } else if (index == MAIN_MENU.STATISTICAL) {
-                  //  setForm(form2);
+                    statistical = new StaticalForm();
+                  showForm(statistical);
                 } else if (index == MAIN_MENU.LOGOUT) {
-                    //setForm(form3);
+                    //showForm(form3);
                 }else if (index == MAIN_MENU.EXIT){
                     System.exit(1);
                 }
